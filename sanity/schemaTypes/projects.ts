@@ -19,19 +19,20 @@ export default defineType({
     {
       name: 'overview',
       title: 'Overview',
-      type: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       name: 'features',
       title: 'Features',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'block' }],
     },
     {
       name: 'techStack',
       title: 'Tech Stack',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'block' }],
     },
     {
         name: 'projectImage',

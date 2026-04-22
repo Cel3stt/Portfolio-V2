@@ -8,7 +8,8 @@ export default defineType({
         defineField({
             name: 'techstack',
             title: 'Tech Stack',
-            type: 'string',
+            type: 'array',
+            of: [{ type: 'string' }], 
             validation: (Rule) => Rule.required(),
         })
     ]
