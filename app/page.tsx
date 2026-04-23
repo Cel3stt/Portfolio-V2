@@ -3,6 +3,7 @@ import Image from "next/image";
 import defaultBg from "@/public/default-bg.png";
 import AboutMe from "@/components/sections/about-me";
 import Projects from "@/components/sections/projects";
+import BuildTracker from "@/components/sections/build-tracker";
 
 export default function Home() {
   return (
@@ -24,8 +25,9 @@ export default function Home() {
             <AboutMe />
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 space-y-4">
             <Projects />
+            <BuildTracker/>
           </div>
         </div>
       </div>
