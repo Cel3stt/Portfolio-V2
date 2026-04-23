@@ -6,7 +6,7 @@ import Projects from "@/components/sections/projects";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <div className="relative w-full h-72">
         <Image
           src={defaultBg}
@@ -16,12 +16,17 @@ export default function Home() {
         />
       </div>
 
-      <div className="mx-70">
+      <div className="container mx-auto px-40">
         <Hero />
 
-        <div className="flex flex-row mt-7 gap-10">
-        <AboutMe />
-        <Projects/>
+        <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4">
+          <div className="md:col-span-1">
+            <AboutMe />
+          </div>
+
+          <div className="md:col-span-3">
+            <Projects />
+          </div>
         </div>
       </div>
     </div>
