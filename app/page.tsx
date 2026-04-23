@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/hero";
 import Image from "next/image";
 import defaultBg from '@/public/default-bg.png'
+import AboutMe from "@/components/sections/about-me";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
 
       <div className="mx-70">
 <Hero />
+<AboutMe/>
       </div>
      
     </div>
