@@ -9,7 +9,7 @@ export default function AboutMe() {
     <div className='flex flex-col'>
         <Image src={defaultProfile} alt="Default Profile" className='size-70' />
 
-         <Card className='flex flex-col '>
+         <Card className='flex flex-col mt-5'>
             <Label className='bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex'> About Me</Label>
 
             <div>
