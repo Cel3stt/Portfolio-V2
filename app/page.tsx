@@ -20,7 +20,7 @@ export default function Home() {
       <div className="container mx-auto px-40">
         <Hero />
 
-        <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4">
+        <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4 m-4">
           <div className="md:col-span-1">
             <AboutMe />
           </div>

@@ -78,7 +78,7 @@ export default function BuildTracker() {
                 </TableCell>
               </TableRow>
 
-                <TableRow>
+              <TableRow>
                 <TableCell className="font-medium">
                   Portfolio Redesign
                 </TableCell>
@@ -93,7 +93,7 @@ export default function BuildTracker() {
                 </TableCell>
               </TableRow>
 
-                <TableRow>
+              <TableRow>
                 <TableCell className="font-medium">
                   Portfolio Redesign
                 </TableCell>
