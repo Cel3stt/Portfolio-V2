@@ -26,7 +26,7 @@ export default function Experience() {
     ]
     
   return (
-    <div className='w-fit'>
+    <div className='w-full'>
       <Card className="">
         <CardHeader className="flex flex-row items-center">
           <div className="flex flex-col">

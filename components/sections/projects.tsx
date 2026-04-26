@@ -40,7 +40,7 @@ export default function Projects() {
     <div className=''>
 
         <Card className=''>
-            <CardHeader className='flex flex-row items-center'> 
+            <CardHeader className='flex flex-col gap-2 sm:flex-row sm:items-center'> 
                
              <div className='flex flex-col'>
                    <div className="flex flex-row space-x-2 items-center">
@@ -63,9 +63,9 @@ export default function Projects() {
             </CardHeader>
 
 
-           <CardContent className='flex flex-col md:flex-row '>
+           <CardContent className='flex flex-nowrap gap-4 overflow-x-auto pb-2'>
         {projects.map((project) => (
-            <div key={project.id} className='space-x-5'>
+            <div key={project.id} className='flex flex-col items-start gap-2 sm:items-center'>
                 
                 <Link href={''} className='relative flex items-center justify-center'>
                     <Image src={projectFolder} alt={project.projectName} className=''/>

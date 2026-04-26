@@ -19,7 +19,7 @@ export default function BuildTracker() {
   return (
     <div className="">
       <Card className="">
-        <CardHeader className="flex flex-row items-center">
+        <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <div className="flex flex-col">
             <div className="flex flex-row space-x-2 items-center">
               <Image src={headerIcon} alt="Projects" className="size-6" />
@@ -41,8 +41,8 @@ export default function BuildTracker() {
           </div>
         </CardHeader>
 
-        <CardContent>
-          <Table>
+        <CardContent className="overflow-x-auto">
+          <Table className="min-w-[480px]">
             <TableHeader>
               <TableRow className=" font-mono text-xs">
                 <TableHead>
@@ -71,7 +71,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
                   >
                     In Progress
                   </Badge>
@@ -86,7 +86,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
                   >
                     In Progress
                   </Badge>
@@ -101,7 +101,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
                   >
                     In Progress
                   </Badge>

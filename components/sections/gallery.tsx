@@ -29,7 +29,7 @@ export default function Gallery() {
   return (
     <div className="w-full">
       <Card>
-        <CardHeader className="flex flex-row items-center">
+        <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <div className="flex flex-col">
             <div className="flex flex-row space-x-2 items-center">
               <Image src={galleryIcon} alt="Gallery" className="size-6" />
@@ -45,7 +45,7 @@ export default function Gallery() {
           </div>
         </CardHeader>
 
-        <div className="grid grid-cols-4 gap-4 p-5 -mt-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 -mt-3">
           {galleryItems.map((item) => (
             <Card
               key={item.id}

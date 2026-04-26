@@ -15,7 +15,7 @@ import Footer from "@/components/sections/footer";
 export default function Home() {
   return (
     <div>
-      <div className="relative w-full h-72">
+      <div className="relative w-full h-48 sm:h-60 md:h-72">
         <Image
           src={defaultBg}
           alt="Default Background"
@@ -24,10 +24,10 @@ export default function Home() {
         />
       </div>
 
-      <div className="container mx-auto px-40 ">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-40">
         <Hero />
 
-        <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4 m-4">
+        <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4 m-0 sm:m-4">
           <div className="md:col-span-1">
             <AboutMe />
             <TechStack />
@@ -38,7 +38,7 @@ export default function Home() {
             <Projects />
             <BuildTracker/>
 
-            <div className="flex flex-row gap-4 ">
+            <div className="flex flex-col lg:flex-row gap-4">
          <div className="w-full">
                  <Experience />
                                   <Contact />
@@ -46,7 +46,7 @@ export default function Home() {
 
 
              
-              <div className="flex flex-col w-3/4  gap-4">
+              <div className="flex flex-col w-full lg:w-3/4 gap-4">
                    <Certifications />
                            
 

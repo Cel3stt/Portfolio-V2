@@ -7,7 +7,7 @@ import { Label } from '../ui/label'
 export default function AboutMe() {
   return (
     <div className='flex flex-col'>
-        <Image src={defaultProfile} alt="Default Profile" className='size-70' />
+        <Image src={defaultProfile} alt="Default Profile" className='w-full max-w-[280px] mx-auto h-auto' />
 
          <Card className='flex flex-col mt-5'>
             <Label className='bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex'> ABOUT ME</Label>
