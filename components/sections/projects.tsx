@@ -72,12 +72,12 @@ export default function Projects() {
                    <Label className='text-sm font-medium absolute'>{project.projectName}</Label>
 
                 </Link>
-                <Button variant={'ghost'} className=' mt-2 '>
+                <Button variant={'ghost'} className='  '>
                     <File className='mt-0.5 shrink-0 text-neutral-600 ' />
                     <Label className='min-w-0 whitespace-normal text-neutral-600 wrap-break-word text-left'>{project.subtitle}</Label>
                 </Button>
 
-                <div className='mt-3 items-center flex'>
+                <div className='mt-1 items-center flex'>
                        <Button variant={'outline'} size={'xs'}>{project.website}</Button>
                 </div>
                  
