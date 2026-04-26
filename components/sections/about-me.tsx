@@ -10,7 +10,7 @@ export default function AboutMe() {
         <Image src={defaultProfile} alt="Default Profile" className='size-70' />
 
          <Card className='flex flex-col mt-5'>
-            <Label className='bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex'> About Me</Label>
+            <Label className='bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex'> ABOUT ME</Label>
 
             <div>
                 <Label className='text-xs font-mono font-light text-justify'>I’m a frontend developer and UI/UX specialist passionate about building intuitive and visually engaging digital experiences. I focus on creating web and mobile applications using modern technologies. Currently, I’m continuously improving my skills in frontend development, exploring new UI frameworks, and working on projects that combine functionality with great user experience.</Label>
