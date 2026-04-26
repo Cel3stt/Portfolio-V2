@@ -36,13 +36,19 @@ export default function Home() {
             <Projects />
             <BuildTracker/>
 
-            <div className="flex flex-row gap-4">
-                              <Certifications />
+            <div className="flex flex-row gap-4 ">
+         <div className="w-full">
+                 <Experience />
+                                  <Contact />
+                                  </div>
 
-              <div className="flex flex-col">
-                              <Experience />
-sx
-              <Contact />
+
+             
+              <div className="flex flex-col w-3/4  gap-4">
+                   <Certifications />
+                           
+
+                           
               </div>
              </div>
           </div>

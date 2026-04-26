@@ -22,7 +22,7 @@ export default function Tools() {
     { category: "Project Management Tools", items: ["Trello", "Notion"] },
   ];
   return (
-    <div className="mt-5">
+    <div className="mt-8">
       <Label className="bg-secondary py-1 px-2 rounded-sm  items-center justify-center flex text-lg font-bold    ">
         {" "}
         TOOLS / TECHNOLOGIES

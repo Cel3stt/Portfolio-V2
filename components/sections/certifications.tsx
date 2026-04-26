@@ -31,6 +31,12 @@ export default function Certifications() {
             name: "Generative AI in Practice",
             issuer: "Sololearn",
             date: "Dec 2025"
+        },
+        {
+            id: 5,
+            name: "ReactJS Projects For Beginners",
+            issuer: "SimpliLearn",
+            date: "Mar 2026"
         }
     ]
   return (
