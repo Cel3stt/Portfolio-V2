@@ -5,6 +5,7 @@ import AboutMe from "@/components/sections/about-me";
 import Projects from "@/components/sections/projects";
 import BuildTracker from "@/components/sections/build-tracker";
 import TechStack from "@/components/sections/tech-stack";
+import Tools from "@/components/sections/tools";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
           <div className="md:col-span-1">
             <AboutMe />
             <TechStack />
+            <Tools/>  
           </div>
 
           <div className="md:col-span-3 space-y-4">
