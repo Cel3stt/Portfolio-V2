@@ -15,7 +15,7 @@ export default function Contact() {
             <div className="flex flex-col space-x-2 items-center">
               <div className="flex-row flex gap-2">
                 <Image src={headerIcon} alt="Projects" className="size-5" />
-                <Label className="text-base font-mono">Contact</Label>
+                <Label className="text-base font-heading">Contact</Label>
               </div>
               <div>
                 <Label className="text-xs bg-primary text-neutral-600">Let's Connect!</Label>

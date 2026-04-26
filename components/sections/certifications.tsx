@@ -46,7 +46,7 @@ export default function Certifications() {
           <div className="flex flex-col">
             <div className="flex flex-row space-x-2 items-center">
               <Image src={headerIcon} alt="Projects" className="size-5" />
-              <Label className="text-base font-mono">Certifications</Label>
+              <Label className="text-base font-heading">Certifications</Label>
             </div>
            
           </div>
