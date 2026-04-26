@@ -9,6 +9,8 @@ import Tools from "@/components/sections/tools";
 import Experience from "@/components/sections/experience";
 import Certifications from "@/components/sections/certifications";
 import Contact from "@/components/sections/contact";
+import Gallery from "@/components/sections/gallery";
+import Footer from "@/components/sections/footer";
 
 export default function Home() {
   return (
@@ -22,7 +24,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="container mx-auto px-40">
+      <div className="container mx-auto px-40 ">
         <Hero />
 
         <div className="mt-7 grid grid-cols-1 gap-7 md:grid-cols-4 m-4">
@@ -52,7 +54,16 @@ export default function Home() {
               </div>
              </div>
           </div>
+
+       
         </div>
+
+           <div className="">
+            <Gallery/>
+          </div>
+
+          <Footer/>
+          
       </div>
     </div>
   );
