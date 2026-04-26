@@ -6,6 +6,9 @@ import Projects from "@/components/sections/projects";
 import BuildTracker from "@/components/sections/build-tracker";
 import TechStack from "@/components/sections/tech-stack";
 import Tools from "@/components/sections/tools";
+import Experience from "@/components/sections/experience";
+import Certifications from "@/components/sections/certifications";
+import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -32,6 +35,16 @@ export default function Home() {
           <div className="md:col-span-3 space-y-4">
             <Projects />
             <BuildTracker/>
+
+            <div className="flex flex-row gap-4">
+                              <Certifications />
+
+              <div className="flex flex-col">
+                              <Experience />
+sx
+              <Contact />
+              </div>
+             </div>
           </div>
         </div>
       </div>

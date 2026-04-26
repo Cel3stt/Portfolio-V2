@@ -71,7 +71,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
                   >
                     In Progress
                   </Badge>
@@ -86,7 +86,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
                   >
                     In Progress
                   </Badge>
@@ -101,7 +101,7 @@ export default function BuildTracker() {
                 <TableCell>
                   <Badge
                     variant="outline"
-                    className="bg-yellow-100 text-yellow-800"
+                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border border-1"
                   >
                     In Progress
                   </Badge>
