@@ -39,7 +39,8 @@ export default defineType({
         defineField({
             name: 'projectImage',
             title: 'Project Image',
-            type: 'image',
+            type: 'array',
+            of: [{ type: 'image' }],
             validation: (Rule) => Rule.required(),
         }),
         defineField({
