@@ -1,6 +1,6 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import certifications from './certifications'
-import contact from './contact'
+import contacts from './contacts'
 import currentBuilding from './current-building'
 import experience from './experience'
 import hero from './hero'
@@ -13,7 +13,6 @@ import projectDetails from './project-details'
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     certifications,
-    contact,
     currentBuilding,
     experience,
     hero,
@@ -21,6 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projects,
     techStack,
     technologies,
-    projectDetails
+    projectDetails,
+    contacts
   ],
 }

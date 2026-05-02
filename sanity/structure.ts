@@ -86,10 +86,10 @@ export const structure: StructureResolver = (S) =>
 
       S.listItem()
       //contact
-      .title("contact")
+      .title("contacts")
       .icon(PhoneIcon)
       .child(
-        S.document().schemaType("contact").documentId("contact")
+        S.document().schemaType("contacts").documentId("contacts")
       ),
       S.divider(),
 

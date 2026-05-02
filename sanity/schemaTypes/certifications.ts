@@ -8,21 +8,34 @@ export default defineType({
         defineField({
             name: 'certificationName',
             title: 'Certification Name',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'certificationIssuer',
-            title: 'Certification Issuer',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'certificationDate',
-            title: 'Certification Date',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        defineField({
+                            name: 'certificationName',
+                            title: 'Certification Name',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'certificationIssuer',
+                            title: 'Certification Issuer',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'certificationDate',
+                            title: 'Certification Date',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                    ]
+                }
+            ]
+        })
+       
       
     ],
     preview: {
