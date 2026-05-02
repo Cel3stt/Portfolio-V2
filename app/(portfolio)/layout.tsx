@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Courgette, Geist_Mono, Inconsolata, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { cn } from "@/lib/utils";
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
