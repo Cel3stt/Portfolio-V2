@@ -20,9 +20,25 @@ export default defineType({
         defineField({
             name: 'certificationDate',
             title: 'Certification Date',
-            type: 'date',
+            type: 'string',
             validation: (Rule) => Rule.required(),
         }),
       
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'certificationName',
+            subtitle: 'certificationIssuer',
+             date: 'certificationDate',
+
+        },
+        prepare(selection){
+            const {title, subtitle, date} = selection;
+            return {
+                title: title,
+                subtitle: subtitle,
+                date: date,
+            }
+        }
+    }
 })

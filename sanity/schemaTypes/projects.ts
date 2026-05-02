@@ -27,11 +27,6 @@ export default defineType({
       type: "text",
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-        name: "projectLabel",
-        title: "Project Label",
-        type: "string",
-      }),
       defineField({
         name: "projectURL",
         title: "Project URL",

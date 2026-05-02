@@ -20,13 +20,13 @@ export default defineType({
         defineField({
             name: 'startDate',
             title: 'Start Date',    
-            type: 'date',
+            type: 'string',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'endDate',
             title: 'End Date',
-            type: 'date',
+            type: 'string',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
