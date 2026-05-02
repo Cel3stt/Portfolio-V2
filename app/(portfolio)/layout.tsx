@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Courgette, Geist_Mono, Inconsolata, JetBrains_Mono } from "next/font/google";
 import "../globals.css";
 import { cn } from "@/lib/utils";
+import { SanityLive } from "@/sanity/lib/live";
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
 const courgetteCursive = Courgette({ subsets: ["latin"], weight: "400", variable: "--font-courgette" });
@@ -38,7 +39,11 @@ export default function RootLayout({
         courgetteCursive.variable
       )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+
+        <SanityLive/> 
+        </body>
     </html>
   );
 }

@@ -1,16 +1,33 @@
 import Image from "next/image";
 import React from "react";
-import defaultProfile from "@/public/default-profile.png";
 import { Card } from "../ui/card";
 import { Label } from "../ui/label";
+import { defineQuery } from "next-sanity";
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
-export default function AboutMe() {
+
+const PROFILE_QUERY = defineQuery(`*[_id == "profile"][0]{
+  profileImage,
+  about
+}`)
+
+export default async function AboutMe() {
+
+  const { data: profile } = await sanityFetch({ query: PROFILE_QUERY })
+  const profileImageSrc =
+    profile?.profileImage && urlFor(profile.profileImage).width(280).height(280).url();
+
+
   return (
     <div className="flex flex-col">
       <Image
-        src={defaultProfile}
-        alt="Default Profile"
+      
+        src={profileImageSrc}
+        alt="Profile Image"
         className="w-full max-w-[280px] mx-auto h-auto"
+        width={280}
+        height={280}
       />
 
       <Card className="flex flex-col mt-5">
@@ -21,12 +38,7 @@ export default function AboutMe() {
 
         <div>
           <Label className="text-xs font-mono font-light text-justify">
-            I’m a frontend developer and UI/UX specialist passionate about
-            building intuitive and visually engaging digital experiences. I
-            focus on creating web and mobile applications using modern
-            technologies. Currently, I’m continuously improving my skills in
-            frontend development, exploring new UI frameworks, and working on
-            projects that combine functionality with great user experience.
+           {profile.about}
           </Label>
         </div>
       </Card>

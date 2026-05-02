@@ -12,7 +12,7 @@ import Contact from "@/components/sections/contact";
 import Gallery from "@/components/sections/gallery";
 import Footer from "@/components/sections/footer";
 
-export default function PortfolioContent() {
+async function PortfolioContent() {
   return (
     <div>
       <div className="relative w-full h-48 sm:h-60 md:h-72">
@@ -68,3 +68,5 @@ export default function PortfolioContent() {
     </div>
   );
 }
+
+export default PortfolioContent

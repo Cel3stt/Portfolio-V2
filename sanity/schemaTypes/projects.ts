@@ -8,10 +8,19 @@ export default defineType({
     defineField({
       name: "projectName",
       title: "Project Name",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+      defineField({
+      name: "name",
+      title: "Name",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
+
+      defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -33,5 +42,9 @@ export default defineType({
         type: "url",
         validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
       }),
+          ]}
+      ]
+    }),
+   
   ],
 });
