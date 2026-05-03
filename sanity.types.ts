@@ -321,3 +321,61 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: components/sections/about-me.tsx
+// Variable: PROFILE_QUERY
+// Query: *[_id == "profile"][0]{  profileImage,  about}
+export type PROFILE_QUERY_RESULT =
+  | {
+      profileImage: null;
+      about: null;
+    }
+  | {
+      profileImage: {
+        asset?: SanityImageAssetReference;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      } | null;
+      about: string | null;
+    }
+  | null;
+
+// Source: components/sections/tech-stack.tsx
+// Variable: TECHSTACK_QUERY
+// Query: *[_id == "techstack"][0]{  techstack}
+export type TECHSTACK_QUERY_RESULT =
+  | {
+      techstack: null;
+    }
+  | {
+      techstack: Array<string> | null;
+    }
+  | null;
+
+// Source: components/sections/tools.tsx
+// Variable: TOOLS_QUERY
+// Query: *[_id == "technologies"][0]{  technologyCategory[]{    _key,    technologyCategory,    technologyList  }}
+export type TOOLS_QUERY_RESULT =
+  | {
+      technologyCategory: null;
+    }
+  | {
+      technologyCategory: Array<{
+        _key: string;
+        technologyCategory: string | null;
+        technologyList: Array<string> | null;
+      }> | null;
+    }
+  | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_id == "profile"][0]{\n  profileImage,\n  about\n}': PROFILE_QUERY_RESULT;
+    '*[_id == "techstack"][0]{\n  techstack\n}': TECHSTACK_QUERY_RESULT;
+    '*[_id == "technologies"][0]{\n  technologyCategory[]{\n    _key,\n    technologyCategory,\n    technologyList\n  }\n}': TOOLS_QUERY_RESULT;
+  }
+}
