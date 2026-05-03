@@ -7,35 +7,20 @@ import { Button } from '../ui/button'
 import { ArrowUpDown, File } from 'lucide-react'
 import projectFolder from '@/public/project-folder.svg'
 import Link from 'next/link'
+import { sanityFetch } from '@/sanity/lib/live'
 
-const projects = [
-    {
-        id: 1,
-        projectName: "Project 1",
-        subtitle: "Lorem ipsum egdgbbagdg.",
-        website: "example.com/project1"
-    },
-    {
-        id: 2,
-        projectName: "Project 2",
-        subtitle: "Lorem ipsum ",
-        website: "example.com/project2"
-    },
-    {
-        id: 3,
-        projectName: "Project 3",
-        subtitle: "Lorem ipsum ",
-        website: "example.com/project3"
-    },
-    {
-        id: 4,
-        projectName: "Project 4",
-        subtitle: "Lorem ipsum .",
-        website: "example.com/project4"
-    }
-]
 
-export default function Projects() {
+const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt desc) {
+  _id,
+  projectName,
+  projectDescription,
+  projectURL
+}`
+
+export default async function Projects() {
+  const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
+
+
   return (
     <div className=''>
 
@@ -63,27 +48,27 @@ export default function Projects() {
             </CardHeader>
 
 
-           <CardContent className='flex flex-nowrap gap-4 overflow-x-auto pb-2'>
-        {projects.map((project) => (
-            <div key={project.id} className='flex flex-col items-start gap-2 sm:items-center'>
-                
-                <Link href={''} className='relative flex items-center justify-center'>
-                    <Image src={projectFolder} alt={project.projectName} className=''/>
-                   <Label className='text-sm font-medium absolute'>{project.projectName}</Label>
+           <CardContent className='grid grid-cols-2 gap-4 pb-4 sm:grid-cols-4'>
+        {(projects as any[])?.map((item) => (
+            <div key={item._id} className='flex flex-col items-center gap-2'>
 
+                <Link href={item.projectURL ?? '#'} target='_blank' rel='noopener noreferrer' className='relative flex w-full items-center justify-center'>
+                    <Image src={projectFolder} alt={item.projectName ?? 'Project'} className='h-auto w-full max-w-[200px]'/>
+                    <span className='absolute max-w-[80%] truncate px-1 text-center text-sm font-medium'>{item.projectName}</span>
                 </Link>
-                <Button variant={'ghost'} className='  '>
-                    <File className='mt-0.5 shrink-0 text-neutral-600 ' />
-                    <Label className='min-w-0 whitespace-normal text-neutral-600 wrap-break-word text-left'>{project.subtitle}</Label>
-                </Button>
 
-                <div className='mt-1 items-center flex'>
-                       <Button variant={'outline'} size={'xs'}>{project.website}</Button>
+                <div className='flex w-full items-start gap-1.5 px-2'>
+                    <File className='mt-0.5 size-3.5 shrink-0 text-neutral-600' />
+                    <p className='min-w-0 flex-1 text-center text-xs leading-snug text-neutral-600 line-clamp-2'>{item.projectDescription}</p>
                 </div>
-                 
-             
-            </div> 
-            
+
+                {item.projectURL && (
+                <Button variant={'outline'} size={'xs'} asChild>
+                    <a href={item.projectURL} target='_blank' rel='noopener noreferrer'>Visit</a>
+                </Button>
+                )}
+
+            </div>
         ))}
 
            </CardContent>

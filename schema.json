@@ -496,7 +496,7 @@
           "type": "string"
         }
       },
-      "projectName": {
+      "projects": {
         "type": "objectAttribute",
         "value": {
           "type": "array",
@@ -526,6 +526,13 @@
                 "optional": true
               },
               "projectURL": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
+              "urlDisplay": {
                 "type": "objectAttribute",
                 "value": {
                   "type": "string"

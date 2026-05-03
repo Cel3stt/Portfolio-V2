@@ -8,7 +8,6 @@ import profile from './profile'
 import projects from './projects'
 import techStack from './tech-stack'
 import technologies from './technologies'
-import projectDetails from './project-details'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,7 +19,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projects,
     techStack,
     technologies,
-    projectDetails,
     contacts
   ],
 }

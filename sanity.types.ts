@@ -101,11 +101,12 @@ export type Project = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  projectName?: Array<{
+  projects?: Array<{
     name?: string;
     slug?: Slug;
     projectDescription?: string;
     projectURL?: string;
+    urlDisplay?: string;
     _key: string;
   }>;
 };

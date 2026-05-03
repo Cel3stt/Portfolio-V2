@@ -28,10 +28,10 @@ export const structure: StructureResolver = (S) =>
 
       S.listItem()
       //projects
-      .title("Project")
+      .title("Projects")
       .icon(FolderDot)
       .child(
-        S.document().schemaType("project").documentId("project")
+        S.documentTypeList("project").title("Projects")
       ),
 
       S.divider(),
