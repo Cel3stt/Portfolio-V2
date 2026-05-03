@@ -24,7 +24,7 @@ export default defineType({
               title: "Contact URL",
               type: "url",
               validation: (Rule) =>
-                Rule.uri({ scheme: ["http", "https", "mailto"] }).required(),
+                Rule.uri({ scheme: ["http", "https", "mailto"] }),
             }),
           ],
         },

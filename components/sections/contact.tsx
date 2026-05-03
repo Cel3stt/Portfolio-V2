@@ -4,9 +4,21 @@ import Image from "next/image";
 import { Label } from "../ui/label";
 import headerIcon from "@/public/header-icon.svg";
 import { Button } from "../ui/button";
+import { sanityFetch } from "@/sanity/lib/live";
 
-export default function Contact() {
-  const social = ["gmail", "linkedin", "github", "facebook"];
+
+const CONTACTS_QUERY = `*[_type == 'contacts'][0]{
+contacts[]{
+_key,
+contactType,
+contactUrl
+}
+}`
+
+export default async function Contact() {
+
+  const {data: contacts} = await sanityFetch({query: CONTACTS_QUERY});
+
   return (
     <div className="w-full mt-3">
       <Card className="bg-[#FBF9F2]">
@@ -26,9 +38,11 @@ export default function Contact() {
         </CardHeader>
 
         <div className="grid grid-cols-2 gap-1 items-center -mt-2 justify-center">
-          {social.map((link) => (
-            <Button variant={"outline"} key={link} className="text-xs py-1">
-              {link}
+          {contacts?.contacts?.map((contact: any) => (
+            <Button asChild variant={"outline"} key={contact._key} className="text-xs py-1">
+              <a href={contact.contactUrl} target="_blank" rel="noopener noreferrer">
+                {contact.contactType}
+              </a>
             </Button>
           ))}
         </div>
