@@ -14,8 +14,23 @@ import {
   TableRow,
 } from "../ui/table";
 import { Badge } from "../ui/badge";
+import { sanityFetch } from "@/sanity/lib/live";
 
-export default function BuildTracker() {
+
+
+
+const CURRENTBUILDS_QUERY = `*[_type == 'currentBuilding'][0]{
+taskName[]{
+_key,
+taskName,
+techstackUsed[],
+status
+}
+}`
+
+export default async function BuildTracker() {
+
+  const {data: currentBuilding} = await sanityFetch({query: CURRENTBUILDS_QUERY}) 
   return (
     <div className="">
       <Card className="">
@@ -63,50 +78,24 @@ export default function BuildTracker() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">
-                  Portfolio Redesign
-                </TableCell>
-                <TableCell>Next.js, TypeScript, Tailwind CSS</TableCell>
-                <TableCell>
-                  <Badge
-                    variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
-                  >
-                    In Progress
-                  </Badge>
-                </TableCell>
-              </TableRow>
+              {currentBuilding?.taskName?.map((task: any) => (
+                <TableRow key={task._key}>
+                  <TableCell className="font-medium">
+                    {task.taskName}
+                  </TableCell>
+                  <TableCell>{task.techstackUsed?.join(", ")}</TableCell>
+                  <TableCell>
+                    <Badge
+                      variant="outline"
+                      className="bg-gray-100 text-gray-800 py-1 px-2 border"
+                    >
+                      {task.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
 
-              <TableRow>
-                <TableCell className="font-medium">
-                  Portfolio Redesign
-                </TableCell>
-                <TableCell>Next.js, TypeScript, Tailwind CSS</TableCell>
-                <TableCell>
-                  <Badge
-                    variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
-                  >
-                    In Progress
-                  </Badge>
-                </TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell className="font-medium">
-                  Portfolio Redesign
-                </TableCell>
-                <TableCell>Next.js, TypeScript, Tailwind CSS</TableCell>
-                <TableCell>
-                  <Badge
-                    variant="outline"
-                    className="bg-yellow-100 text-yellow-800 py-1 px-2 border"
-                  >
-                    In Progress
-                  </Badge>
-                </TableCell>
-              </TableRow>
+              
             </TableBody>
           </Table>
         </CardContent>
