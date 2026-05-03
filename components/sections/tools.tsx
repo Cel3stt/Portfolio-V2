@@ -1,26 +1,22 @@
 import React from "react";
 import { Card } from "../ui/card";
 import { Label } from "../ui/label";
-import { Car } from "lucide-react";
+import { defineQuery } from "next-sanity";
+import { sanityFetch } from "@/sanity/lib/live";
 
-export default function Tools() {
-  const tools = [
-    {
-      category: "Libraries",
-      items: [
-        "Material-UI",
-        "Shadcn",
-        "Radix-UI",
-        "Daisy UI",
-        "React Native Reusables UI",
-      ],
-    },
-    {
-      category: "Development Tools",
-      items: ["Git", "VS Code", "Postman", "Figma"],
-    },
-    { category: "Project Management Tools", items: ["Trello", "Notion"] },
-  ];
+
+const TOOLS_QUERY = defineQuery(`*[_id == "technologies"][0]{
+  technologyCategory[]{
+    _key,
+    technologyCategory,
+    technologyList
+  }
+}`)
+
+export default async function Tools() {
+
+  const { data: technologies } = await sanityFetch({ query: TOOLS_QUERY });
+ 
   return (
     <div className="mt-8">
       <Label className="bg-secondary py-1 px-2 rounded-sm  items-center justify-center flex text-lg font-bold    ">
@@ -29,20 +25,25 @@ export default function Tools() {
       </Label>
 
       <Card className="mt-3">
-        {tools.map((group) => (
-          <div key={group.category}>
-            <Label className="text-sm font-mono font-normal">
-              {group.category}:
-            </Label>
-            <div className="mt-1 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <Label className="text-sm font-normal text-neutral-800 after:content-[','] last:after:content-['']" key={item}>
-                  {item}
-                </Label>
-              ))}
+        {technologies?.technologyCategory?.map(
+          (group) => (
+            <div key={group._key}>
+              <Label className="text-sm font-mono font-normal">
+                {group.technologyCategory}:
+              </Label>
+              <div className="mt-1 flex flex-wrap gap-2">
+                {group.technologyList?.map((item) => (
+                  <Label
+                    className="text-sm font-normal text-neutral-800 after:content-[','] last:after:content-['']"
+                    key={`${group._key}-${item}`}
+                  >
+                    {item}
+                  </Label>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </Card>
     </div>
   );
