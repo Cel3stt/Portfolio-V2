@@ -27,11 +27,11 @@ export default async function Tools() {
       <Card className="mt-3">
         {technologies?.technologyCategory?.map(
           (group) => (
-            <div key={group._key}>
+            <div key={group._key} className="">
               <Label className="text-sm font-mono font-normal">
                 {group.technologyCategory}:
               </Label>
-              <div className="mt-1 flex flex-wrap gap-2">
+              <div className="mt-1 flex flex-wrap gap-2 space-x-1">
                 {group.technologyList?.map((item) => (
                   <Label
                     className="text-sm font-normal text-neutral-800 after:content-[','] last:after:content-['']"

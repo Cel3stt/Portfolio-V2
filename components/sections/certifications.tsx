@@ -3,42 +3,24 @@ import { Card, CardContent, CardHeader } from '../ui/card'
 import Image from 'next/image'
 import { Label } from '../ui/label'
 import headerIcon from '@/public/header-icon.svg'
+import { sanityFetch } from '@/sanity/lib/live'
 
 
-export default function Certifications() {
 
-    const certifications = [
-        {
-            id: 1,
-            name: "Cyber Security 101 Certificate",
-            issuer: "TryHackMe",
-            date: "Feb 2026 "
-        },
-        {
-            id: 2,
-            name: "Postman API Fundamentals Certificate",
-            issuer: "Postman",
-            date: "Dec 2025"
-        },
-        {
-            id: 3,
-            name: "Introduction to SQl",
-            issuer: "Sololearn",
-            date: "Dec 2025"
-        },
-        {
-            id: 4,
-            name: "Generative AI in Practice",
-            issuer: "Sololearn",
-            date: "Dec 2025"
-        },
-        {
-            id: 5,
-            name: "ReactJS Projects For Beginners",
-            issuer: "SimpliLearn",
-            date: "Mar 2026"
-        }
-    ]
+const CERTIFICATIONS_QUERY = `*[_type == 'certifications'][0]{
+certificationName[]{
+_key,
+certificationName,
+certificationIssuer,
+certificationDate
+}}`
+
+
+export default async function Certifications() {
+
+    const {data: certifications} = await sanityFetch({query: CERTIFICATIONS_QUERY});
+
+   
   return (
     <div className='w-full'>
         <Card className="">
@@ -52,12 +34,12 @@ export default function Certifications() {
           </div>
         </CardHeader>
 
-         <CardContent>
-            {certifications.map((cert) => (
-                <div key={cert.id} className='mb-3 space-y-1 text-neutral-700 '>
-                    <Label className='text-sm bg-primary'>{cert.name}</Label>
-                    <Label className='text-sm'>{cert.issuer}</Label>
-                    <Label className='text-sm'>Issued: {cert.date}</Label>
+         <CardContent className='flex flex-col gap-4'>
+            {certifications?.certificationName?.map((group: any) => (
+                <div key={group._key} className='mb-3 space-y-1 text-neutral-700 '>
+                    <Label className='text-md bg-primary'>{group.certificationName}</Label>
+                    <Label className='text-sm'>{group.certificationIssuer}</Label>
+                    <Label className='text-sm'>Issued: {group.certificationDate}</Label>
                 </div>
             ))}
          </CardContent>
