@@ -107,7 +107,7 @@ export default function BuildTracker() {
                   </Badge>
                 </TableCell>
               </TableRow>
-            </TableBody>{" "}
+            </TableBody>
           </Table>
         </CardContent>
       </Card>
