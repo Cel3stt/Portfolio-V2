@@ -35,6 +35,9 @@ export default async function Projects() {
                 <Label className='font-heading font-extralight text-neutral-600 text-xs ml-8'>Click each folder to view the details of the project</Label>
              </div>
 
+ <Button variant={'outline'} size={'xs'} asChild>
+                    <Link href="/project-details">details</Link>
+                </Button>
              <div className='flex-row flex justify-between items-center ml-auto'>
                 <Button variant="outline" size="sm" className='ml-auto'>
                     <ArrowUpDown className='font-bold text-neutral-700' />
