@@ -8,6 +8,7 @@ import { ArrowUpDown, File } from 'lucide-react'
 import projectFolder from '@/public/project-folder.svg'
 import Link from 'next/link'
 import { sanityFetch } from '@/sanity/lib/live'
+import ProjectsDialog from './projects-dialog'
 
 
 const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt desc) {
@@ -43,9 +44,7 @@ export default async function Projects() {
                     <ArrowUpDown className='font-bold text-neutral-700' />
                 </Button>
 
-                <Button className='bg-[#2783DE] text-white  hover:bg-blue-400 rounded-sm px-3 py-1 ml-2'>
-                    View All
-                </Button>
+                <ProjectsDialog projectlist={projects} />
              </div>
 
             </CardHeader>
