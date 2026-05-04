@@ -13,8 +13,15 @@ import {
 } from "../ui/dialog"
 
 
+interface Project {
+    _id: string
+    projectName?: string
+    projectDescription?: string
+    projectURL?: string
+}
+
 interface ProjectsDialogProps {
-    projectlist: any[]
+    projectlist: Project[]
 }
 
 export default function ProjectsDialog({ projectlist }: ProjectsDialogProps){

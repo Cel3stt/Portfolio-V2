@@ -15,6 +15,7 @@ import {
 } from "../ui/table";
 import { Badge } from "../ui/badge";
 import { sanityFetch } from "@/sanity/lib/live";
+import TrackerDialog from "./tracker-dialog";
 
 
 
@@ -50,9 +51,10 @@ export default async function BuildTracker() {
               <ArrowUpDown className="font-bold text-neutral-700" />
             </Button>
 
-            <Button className="bg-[#2783DE] text-white  hover:bg-blue-400 rounded-sm px-3 py-1 ml-2">
-              View All
-            </Button>
+           
+
+                            <TrackerDialog trackerList={currentBuilding?.taskName || []} />
+            
           </div>
         </CardHeader>
 
