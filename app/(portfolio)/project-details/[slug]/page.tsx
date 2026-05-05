@@ -14,13 +14,23 @@ const PROJECT_QUERY = `*[_type == "project" && (slug.current == $slug || _id == 
   techStack,
   projectRole,
   projectOverview,
-  projectImage,
+  projectImage[]{
+    _key,
+    asset->{
+      _ref,
+      _id,
+    }
+  },
   projectFeatures
 }`;
 
 type SanityImage = {
   _key?: string;
-  asset?: { _ref?: string };
+  asset?: {
+    _ref?: string;
+    _id?: string;
+    metadata?: { dimensions?: { width?: number; height?: number } };
+  };
 };
 
 type Project = {
@@ -125,21 +135,20 @@ export default async function ProjectDetails({
                 PREVIEW
               </Label>
 
-              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">
                 {project.projectImage.map((img, idx) => {
-                  if (!img?.asset?._ref) return null;
-                  const src = urlFor(img).width(1200).url();
+                
                   return (
                     <div
                       key={img._key ?? idx}
                       className="relative aspect-video w-full overflow-hidden rounded-md border border-neutral-200"
                     >
                       <Image
-                        src={src}
+                        src={urlFor(img).url()}
                         alt={`${project.projectName ?? "Project"} preview ${idx + 1}`}
                         fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className=""
+                       
                       />
                     </div>
                   );
