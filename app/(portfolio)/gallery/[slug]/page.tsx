@@ -4,7 +4,7 @@ import galleryBg2 from "@/public/gallery-bg-2.svg";
 import galleryIcon from "@/public/gallery-avatar.svg";
 import { Label } from "@/components/ui/label";
 import { sanityFetch } from "@/sanity/lib/live";
-import { urlFor } from "@/sanity/lib/image";
+import GalleryImageGroup from "@/components/sections/gallery-image-group";
 
 const GALLERY_QUERY = `*[_type == "gallery" && (slug.current == $slug || _id == $slug)][0]{
   _id,
@@ -91,39 +91,15 @@ export default async function GalleryPage({
 
           {gallery.galleryImages && gallery.galleryImages.length > 0 && (
             <div className="mt-10 mb-10 space-y-8">
-              <Label className="bg-secondary text-xl px-2">Images</Label>
+              <Label className="bg-secondary text-3xl px-2">Images</Label>
 
               {gallery.galleryImages.map((group, groupIndex) => (
-                <div key={group._key ?? groupIndex} className="mt-6">
-                  <Label className="block text-lg font-medium text-neutral-700">
-                    {group.imageTitle}
-                  </Label>
-                  <div className="my-3 border-t border-neutral-200" />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {group.images?.map((image, index) => {
-                      if (!image?.asset) return null;
-                      const dims = image.asset.metadata?.dimensions;
-                      const width = dims?.width ?? 1200;
-                      const height = dims?.height ?? 800;
-                      const src = urlFor(image).width(1200).url();
-                      return (
-                        <div
-                          key={image._key ?? index}
-                          className="overflow-hidden rounded-md border border-neutral-200 bg-neutral-50"
-                        >
-                          <Image
-                            src={src}
-                            alt={`${group.imageTitle ?? "Image"} ${index + 1}`}
-                            width={width}
-                            height={height}
-                            className="h-auto w-full object-cover"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <GalleryImageGroup
+                  key={group._key ?? groupIndex}
+                  imageTitle={group.imageTitle}
+                  images={group.images}
+                  groupAlt={gallery.galleryTitle}
+                />
               ))}
             </div>
           )}
