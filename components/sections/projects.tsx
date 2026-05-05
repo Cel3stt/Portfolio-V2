@@ -38,9 +38,7 @@ export default async function Projects() {
              </div>
 
              <div className='flex-row flex justify-between items-center ml-auto'>
-                <Button variant="outline" size="sm" className='ml-auto'>
-                    <ArrowUpDown className='font-bold text-neutral-700' />
-                </Button>
+            
 
                 <ProjectsDialog projectlist={projects} />
              </div>

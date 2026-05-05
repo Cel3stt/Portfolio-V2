@@ -47,9 +47,7 @@ export default async function BuildTracker() {
           </div>
 
           <div className="flex-row flex justify-between items-center ml-auto">
-            <Button variant="outline" size="sm" className="ml-auto">
-              <ArrowUpDown className="font-bold text-neutral-700" />
-            </Button>
+           
 
            
 
