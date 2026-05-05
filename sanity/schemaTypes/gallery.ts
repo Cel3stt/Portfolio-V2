@@ -12,10 +12,30 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+                source: 'galleryTitle',
+                maxLength: 96,
+            },
+        }),
+        defineField({
             name: 'galleryImages',
             title: 'Gallery Images',
             type: 'array',
-            of: [{ type: 'image' }],
+            of: [
+                {
+                    type: 'image',
+                    fields: [
+                        defineField({
+                            name: 'title',
+                            title: 'Image Title',
+                            type: 'string',
+                        }),
+                    ],
+                },
+            ],
         }),
         defineField({
             name: 'galleryDescription',

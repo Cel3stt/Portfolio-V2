@@ -20,6 +20,7 @@ import Link from "next/link";
 
 const GALLERY_QUERY = `*[_type == "gallery"]{
   _id,
+  "slug": coalesce(slug.current, _id),
   galleryTitle,
   galleryDescription
 }`;
@@ -53,20 +54,24 @@ export default async function Gallery() {
         </Button>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 -mt-3">
-          {gallery.map((item: any) => (
-            <Card
-              key={item.id}
-              className="rounded-lg flex-col items-center justify-center "
-            >
-              <Image src={galleryBg} alt={item.galleryTitle} className=" p-1" />
+          {gallery.map((item: any) => {
+            const detailsHref = item.slug ? `/gallery/${item.slug}` : "#";
+            return (
+              <Link key={item._id} href={detailsHref}>
+                <Card className="rounded-lg flex-col items-center justify-center transition-colors hover:bg-accent">
+                  <Image src={galleryBg} alt={item.galleryTitle} className=" p-1" />
 
-              <div className="items-center justify-center -mt-4 text-neutral-700">
-                <Button variant={"ghost"} className="text-sm ">
-                  <File /> {item.galleryTitle}
-                </Button>
-              </div>
-            </Card>
-          ))}
+                  <div className="items-center justify-center -mt-4 text-neutral-700">
+                    <Button variant={"ghost"} className="text-sm " asChild>
+                      <span>
+                        <File /> {item.galleryTitle}
+                      </span>
+                    </Button>
+                  </div>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
       </Card>
     </div>

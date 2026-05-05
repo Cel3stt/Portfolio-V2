@@ -168,7 +168,9 @@ export type Gallery = {
   _updatedAt: string;
   _rev: string;
   galleryTitle?: string;
+  slug?: Slug;
   galleryImages?: Array<{
+    title?: string;
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;

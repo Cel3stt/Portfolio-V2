@@ -137,7 +137,7 @@ export default async function ProjectDetails({
 
               <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">
                 {project.projectImage.map((img, idx) => {
-                
+                  
                   return (
                     <div
                       key={img._key ?? idx}
@@ -148,7 +148,6 @@ export default async function ProjectDetails({
                         alt={`${project.projectName ?? "Project"} preview ${idx + 1}`}
                         fill
                         className=""
-                       
                       />
                     </div>
                   );
