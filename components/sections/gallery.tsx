@@ -7,25 +7,28 @@ import galleryBg from "@/public/gallery-bg.svg";
 import { Button } from "../ui/button";
 import { File } from "lucide-react";
 import galleryDesign from '@/public/gallery-design.svg';
-export default function Gallery() {
-  const galleryItems = [
-    {
-      id: 1,
-      name: "HydroNew Prototype",
-    },
-    {
-      id: 2,
-      name: "Research Conference for our Thesis",
-    },
-    {
-      id: 3,
-      name: "Codify",
-    },
-    {
-      id: 4,
-      name: "Computer Science Council",
-    },
-  ];
+import { sanityFetch } from "@/sanity/lib/live";
+import Link from "next/link";
+
+
+
+
+
+
+
+
+
+const GALLERY_QUERY = `*[_type == "gallery"]{
+  _id,
+  galleryTitle,
+  galleryDescription
+}`;
+
+export default async function Gallery() {
+
+  const {data: gallery} = await sanityFetch({ query: GALLERY_QUERY });
+
+
   return (
     <div className="w-full">
       <Card>
@@ -45,17 +48,21 @@ export default function Gallery() {
           </div>
         </CardHeader>
 
+        <Button asChild>
+          <Link href="/gallery">VIEW</Link>
+        </Button>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 -mt-3">
-          {galleryItems.map((item) => (
+          {gallery.map((item: any) => (
             <Card
               key={item.id}
               className="rounded-lg flex-col items-center justify-center "
             >
-              <Image src={galleryBg} alt={item.name} className=" p-1" />
+              <Image src={galleryBg} alt={item.galleryTitle} className=" p-1" />
 
               <div className="items-center justify-center -mt-4 text-neutral-700">
                 <Button variant={"ghost"} className="text-sm ">
-                  <File /> {item.name}
+                  <File /> {item.galleryTitle}
                 </Button>
               </div>
             </Card>
