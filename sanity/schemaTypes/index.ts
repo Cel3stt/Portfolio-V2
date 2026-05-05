@@ -3,6 +3,7 @@ import certifications from './certifications'
 import contacts from './contacts'
 import currentBuilding from './current-building'
 import experience from './experience'
+import gallery from './gallery'
 import hero from './hero'
 import profile from './profile'
 import projects from './projects'
@@ -14,6 +15,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     certifications,
     currentBuilding,
     experience,
+    gallery,
     hero,
     profile,
     projects,

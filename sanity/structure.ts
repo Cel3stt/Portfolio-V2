@@ -1,6 +1,6 @@
 import type {StructureResolver} from 'sanity/structure'
 
-import { BriefcaseBusinessIcon, CpuIcon, DroneIcon, FolderDot, KanbanIcon, PhoneIcon, ScrollTextIcon, UserIcon, WallpaperIcon } from 'lucide-react'
+import { BriefcaseBusinessIcon, CpuIcon, DroneIcon, FolderDot, GalleryThumbnails, KanbanIcon, PhoneIcon, ScrollTextIcon, UserIcon, WallpaperIcon } from 'lucide-react'
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -90,6 +90,15 @@ export const structure: StructureResolver = (S) =>
       .icon(PhoneIcon)
       .child(
         S.document().schemaType("contacts").documentId("contacts")
+      ),
+      S.divider(),
+
+      S.listItem()
+      //gallery
+      .title("gallery")
+      .icon(GalleryThumbnails)
+      .child(
+        S.documentTypeList("gallery").title("Gallery")
       ),
       S.divider(),
 

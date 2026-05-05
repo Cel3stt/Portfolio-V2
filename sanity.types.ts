@@ -28,6 +28,28 @@ export type Contacts = {
   }>;
 };
 
+export type Technologies = {
+  _id: string;
+  _type: "technologies";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  technologyCategory?: Array<{
+    technologyCategory?: string;
+    technologyList?: Array<string>;
+    _key: string;
+  }>;
+};
+
+export type Techstack = {
+  _id: string;
+  _type: "techstack";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  techstack?: Array<string>;
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -35,17 +57,37 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type ProjectDetails = {
+export type Project = {
   _id: string;
-  _type: "projectDetails";
+  _type: "project";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   projectName?: string;
+  slug?: Slug;
+  projectDescription?: string;
+  projectURL?: string;
   projectDate?: string;
   techStack?: Array<string>;
   projectRole?: string;
-  projectOverview?: string;
+  projectOverview?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h2" | "h3" | "blockquote" | "hr";
+    listItem?: "bullet" | "number" | "lined";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
   projectImage?: Array<{
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -71,44 +113,6 @@ export type SanityImageHotspot = {
   y?: number;
   height?: number;
   width?: number;
-};
-
-export type Technologies = {
-  _id: string;
-  _type: "technologies";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  technologyCategory?: Array<{
-    technologyCategory?: string;
-    technologyList?: Array<string>;
-    _key: string;
-  }>;
-};
-
-export type Techstack = {
-  _id: string;
-  _type: "techstack";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  techstack?: Array<string>;
-};
-
-export type Project = {
-  _id: string;
-  _type: "project";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  projects?: Array<{
-    name?: string;
-    slug?: Slug;
-    projectDescription?: string;
-    projectURL?: string;
-    urlDisplay?: string;
-    _key: string;
-  }>;
 };
 
 export type Slug = {
@@ -155,6 +159,24 @@ export type Hero = {
   };
   subtitle?: string;
   welcomeMessage?: string;
+};
+
+export type Gallery = {
+  _id: string;
+  _type: "gallery";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  galleryTitle?: string;
+  galleryImages?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  galleryDescription?: string;
 };
 
 export type Experience = {
@@ -301,16 +323,16 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | Contacts
-  | SanityImageAssetReference
-  | ProjectDetails
-  | SanityImageCrop
-  | SanityImageHotspot
   | Technologies
   | Techstack
+  | SanityImageAssetReference
   | Project
+  | SanityImageCrop
+  | SanityImageHotspot
   | Slug
   | Profile
   | Hero
+  | Gallery
   | Experience
   | CurrentBuilding
   | Certifications
