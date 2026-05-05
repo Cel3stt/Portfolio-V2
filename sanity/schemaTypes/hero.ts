@@ -17,12 +17,6 @@ export default defineType({
             type: 'image',
             validation: (Rule) => Rule.required(),
         }),
-         defineField({
-            name: 'title',
-            title: 'Title',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
         defineField({
             name: 'subtitle',
             title: 'Subtitle',

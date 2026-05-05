@@ -8,21 +8,50 @@ export default defineType({
         defineField({
             name: 'certificationName',
             title: 'Certification Name',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'certificationIssuer',
-            title: 'Certification Issuer',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'certificationDate',
-            title: 'Certification Date',
-            type: 'date',
-            validation: (Rule) => Rule.required(),
-        }),
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        defineField({
+                            name: 'certificationName',
+                            title: 'Certification Name',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'certificationIssuer',
+                            title: 'Certification Issuer',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'certificationDate',
+                            title: 'Certification Date',
+                            type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                    ]
+                }
+            ]
+        })
+       
       
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'certificationName',
+            subtitle: 'certificationIssuer',
+             date: 'certificationDate',
+
+        },
+        prepare(selection){
+            const {title, subtitle, date} = selection;
+            return {
+                title: title,
+                subtitle: subtitle,
+                date: date,
+            }
+        }
+    }
 })
