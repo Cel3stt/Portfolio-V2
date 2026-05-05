@@ -80,6 +80,7 @@ export default function GalleryImageGroup({
             variant="outline"
             size="sm"
             onClick={() => setExpanded((v) => !v)}
+            className="bg-primary border-4"
           >
             {expanded ? "Show less" : `Show more (${hiddenCount})`}
           </Button>

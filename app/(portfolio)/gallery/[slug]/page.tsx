@@ -64,7 +64,7 @@ export default async function GalleryPage({
   return (
     <div>
       <div>
-        <div className="relative w-full h-48 sm:h-60 md:h-72">
+        <div className="relative w-full h-40 sm:h-52 md:h-60">
           <Image
             src={galleryBg2}
             alt="Default Background"
