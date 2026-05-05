@@ -11,20 +11,21 @@ const GALLERY_QUERY = `*[_type == "gallery" && (slug.current == $slug || _id == 
   galleryTitle,
   galleryDescription,
   galleryImages[]{
-
     _key,
-    title,
-    asset->{
-      _ref,
-      _id,
-      metadata { dimensions { width, height } }
+    imageTitle,
+    images[]{
+      _key,
+      asset->{
+        _ref,
+        _id,
+        metadata { dimensions { width, height } }
+      }
     }
   }
 }`;
 
 type SanityImage = {
   _key?: string;
-  title?: string;
   asset?: {
     _ref?: string;
     _id?: string;
@@ -32,10 +33,16 @@ type SanityImage = {
   };
 };
 
+type ImageGroup = {
+  _key?: string;
+  imageTitle?: string;
+  images?: SanityImage[];
+};
+
 type Gallery = {
   galleryTitle?: string;
   galleryDescription?: string;
-  galleryImages?: SanityImage[];
+  galleryImages?: ImageGroup[];
 };
 
 export default async function GalleryPage({
@@ -83,36 +90,41 @@ export default async function GalleryPage({
           )}
 
           {gallery.galleryImages && gallery.galleryImages.length > 0 && (
-            <div className="mt-10 mb-10">
+            <div className="mt-10 mb-10 space-y-8">
               <Label className="bg-secondary text-xl px-2">Images</Label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-                {gallery.galleryImages.map((image, index) => {
-                  if (!image?.asset) return null;
-                  const dims = image.asset.metadata?.dimensions;
-                  const width = dims?.width ?? 1200;
-                  const height = dims?.height ?? 800;
-                  const src = urlFor(image).width(1200).url();
-                  const imageTitle = image.title?.trim();
-                  return (
-                    <div
-                      key={image._key ?? index}
-                      className="overflow-hidden rounded-md border border-neutral-200 bg-neutral-50"
-                    >
-                      <Image
-                        src={src}
-                        alt={`${gallery.galleryTitle ?? "Gallery"} image ${index + 1}`}
-                        width={width}
-                        height={height}
-                        className="h-auto w-full object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                      <Label className="block px-3 py-2 text-sm font-medium text-neutral-700">
-                        {imageTitle || `Image ${index + 1}`}
-                      </Label>
-                    </div>
-                  );
-                })}
-              </div>
+
+              {gallery.galleryImages.map((group, groupIndex) => (
+                <div key={group._key ?? groupIndex} className="mt-6">
+                  <Label className="block text-lg font-medium text-neutral-700">
+                    {group.imageTitle}
+                  </Label>
+                  <div className="my-3 border-t border-neutral-200" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {group.images?.map((image, index) => {
+                      if (!image?.asset) return null;
+                      const dims = image.asset.metadata?.dimensions;
+                      const width = dims?.width ?? 1200;
+                      const height = dims?.height ?? 800;
+                      const src = urlFor(image).width(1200).url();
+                      return (
+                        <div
+                          key={image._key ?? index}
+                          className="overflow-hidden rounded-md border border-neutral-200 bg-neutral-50"
+                        >
+                          <Image
+                            src={src}
+                            alt={`${group.imageTitle ?? "Image"} ${index + 1}`}
+                            width={width}
+                            height={height}
+                            className="h-auto w-full object-cover"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>

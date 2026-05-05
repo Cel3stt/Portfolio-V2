@@ -26,14 +26,27 @@ export default defineType({
             type: 'array',
             of: [
                 {
-                    type: 'image',
+                    type: 'object',
+                    name: 'imageGroup',
+                    title: 'Image Group',
                     fields: [
                         defineField({
-                            name: 'title',
+                            name: 'imageTitle',
                             title: 'Image Title',
                             type: 'string',
+                            validation: (Rule) => Rule.required(),
+                        }),
+                        defineField({
+                            name: 'images',
+                            title: 'Images',
+                            type: 'array',
+                            of: [{ type: 'image' }],
+                            validation: (Rule) => Rule.min(1),
                         }),
                     ],
+                    preview: {
+                        select: { title: 'imageTitle', media: 'images.0' },
+                    },
                 },
             ],
         }),
