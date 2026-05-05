@@ -36,7 +36,7 @@ export default function Gallery() {
               <Label className="text-lg font-cursive">Gallery</Label>
             </div>
             <Label className="bg-primary font-heading font-extralight text-neutral-600 text-xs ml-8">
-              A collection of UI, experiments, and random builds.
+              A collection experiments, events, and personal life.
             </Label>
           </div>
 
