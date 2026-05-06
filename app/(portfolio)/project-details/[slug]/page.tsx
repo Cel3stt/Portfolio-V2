@@ -125,7 +125,7 @@ export default async function ProjectDetails({
                 Project Overview
               </Label>
 
-              <div className="mt-3 max-w-4xl space-y-3 text-justify leading-normal text-neutral-800 [&_p]:indent-7">
+              <div className="mt-3 space-y-3 text-justify leading-normal text-neutral-800 [&_p]:indent-7">
                 <PortableText value={project.projectOverview} />
               </div>
             </div>
