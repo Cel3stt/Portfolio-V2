@@ -20,14 +20,14 @@ export default async function AboutMe() {
     return null;
   }
 
-  const profileImageSrc = profile.profileImage
+  const profileImageSrc: string | undefined = profile.profileImage
     ? urlFor(profile.profileImage).width(280).height(280).url()
-    : null;
+    : undefined;
 
 
   return (
     <div className="flex flex-col">
-      {profileImageSrc && (
+      {profileImageSrc ? (
         <Image
           src={profileImageSrc}
           alt="Profile Image"
@@ -35,7 +35,7 @@ export default async function AboutMe() {
           width={280}
           height={280}
         />
-      )}
+      ) : null}
 
       <Card className="flex flex-col mt-5">
         <Label className="bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex">
