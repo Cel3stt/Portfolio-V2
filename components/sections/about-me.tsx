@@ -15,20 +15,27 @@ const PROFILE_QUERY = defineQuery(`*[_id == "profile"][0]{
 export default async function AboutMe() {
 
   const { data: profile } = await sanityFetch({ query: PROFILE_QUERY })
-  const profileImageSrc =
-    profile?.profileImage && urlFor(profile.profileImage).width(280).height(280).url();
+
+  if (!profile) {
+    return null;
+  }
+
+  const profileImageSrc = profile.profileImage
+    ? urlFor(profile.profileImage).width(280).height(280).url()
+    : null;
 
 
   return (
     <div className="flex flex-col">
-      <Image
-      
-        src={profileImageSrc}
-        alt="Profile Image"
-        className="w-full max-w-[280px] mx-auto h-auto"
-        width={280}
-        height={280}
-      />
+      {profileImageSrc && (
+        <Image
+          src={profileImageSrc}
+          alt="Profile Image"
+          className="w-full max-w-[280px] mx-auto h-auto"
+          width={280}
+          height={280}
+        />
+      )}
 
       <Card className="flex flex-col mt-5">
         <Label className="bg-primary py-1 px-2 rounded-sm text-xl items-center justify-center flex">
