@@ -6,7 +6,7 @@ import icon from "@/public/details-avatar.svg";
 import { Label } from "@/components/ui/label";
 import { CalendarDays, Cpu, User } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/live";
-import { urlFor } from "@/sanity/lib/image";
+import ProjectPreview from "@/components/sections/project-preview";
 
 const PROJECT_QUERY = `*[_type == "project" && (slug.current == $slug || _id == $slug)][0]{
   projectName,
@@ -79,6 +79,8 @@ export default async function ProjectDetails({
     },
   ];
 
+  
+
   return (
     <div>
       <div>
@@ -130,30 +132,10 @@ export default async function ProjectDetails({
           )}
 
           {project.projectImage && project.projectImage.length > 0 && (
-            <div className="mt-10">
-              <Label className="bg-primary py-1 px-2 text-lg font-semibold">
-                PREVIEW
-              </Label>
-
-              <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">
-                {project.projectImage.map((img, idx) => {
-                  
-                  return (
-                    <div
-                      key={img._key ?? idx}
-                      className="relative aspect-video w-full overflow-hidden rounded-md border border-neutral-200"
-                    >
-                      <Image
-                        src={urlFor(img).url()}
-                        alt={`${project.projectName ?? "Project"} preview ${idx + 1}`}
-                        fill
-                        className=""
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <ProjectPreview
+              images={project.projectImage}
+              projectName={project.projectName}
+            />
           )}
 
           {project.projectFeatures && project.projectFeatures.length > 0 && (
