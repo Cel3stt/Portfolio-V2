@@ -11,7 +11,7 @@ import { sanityFetch } from '@/sanity/lib/live'
 import ProjectsDialog from './projects-dialog'
 
 
-const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt desc) {
+const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt asc) {
   _id,
   "slug": coalesce(slug.current, _id),
   projectName,
