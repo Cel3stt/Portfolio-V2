@@ -53,7 +53,44 @@ export default defineType({
         defineField({
             name: 'galleryDescription',
             title: 'Gallery Description',
-            type: 'text',
+             type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "Heading 2", value: "h2" },
+            { title: "Heading 3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+            { title: "Horizontal line", value: "hr" },
+          ],
+          lists: [
+            { title: "Bullet", value: "bullet" },
+            { title: "Numbered", value: "number" },
+            { title: 'Lined', value: 'lined' },
+          ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  defineField({
+                    name: "href",
+                    type: "url",
+                    title: "URL",
+                  }),
+                ],
+              },
+            ],
+          },
+        },
+      ],
         }),
         
     ]

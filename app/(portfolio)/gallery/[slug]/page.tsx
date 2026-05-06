@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { PortableText } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import galleryBg2 from "@/public/gallery-bg-2.svg";
 import galleryIcon from "@/public/gallery-avatar.svg";
 import { Label } from "@/components/ui/label";
@@ -41,7 +43,7 @@ type ImageGroup = {
 
 type Gallery = {
   galleryTitle?: string;
-  galleryDescription?: string;
+  galleryDescription?: PortableTextBlock[];
   galleryImages?: ImageGroup[];
 };
 
@@ -80,14 +82,15 @@ export default async function GalleryPage({
             <Label className="text-2xl font-mono">{gallery.galleryTitle}</Label>
           </div>
 
-          {gallery.galleryDescription && (
-            <div className="mt-10">
-              <Label className="bg-secondary text-xl px-2">Overview</Label>
-              <p className="mt-2 text-neutral-700">
-                {gallery.galleryDescription}
-              </p>
-            </div>
-          )}
+          {gallery.galleryDescription &&
+            gallery.galleryDescription.length > 0 && (
+              <div className="mt-10">
+                <Label className="bg-secondary text-xl px-2">Overview</Label>
+                <div className="mt-2 text-neutral-700">
+                  <PortableText value={gallery.galleryDescription} />
+                </div>
+              </div>
+            )}
 
           {gallery.galleryImages && gallery.galleryImages.length > 0 && (
             <div className="mt-10 mb-10 space-y-8">
