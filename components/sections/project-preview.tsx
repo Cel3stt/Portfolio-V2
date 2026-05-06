@@ -75,7 +75,7 @@ export default function ProjectPreview({
             variant="outline"
             size="lg"
             onClick={() => setExpanded((v) => !v)}
-            className="bg-pink-200 border-black/40 hover:bg-pink-300 cursor-pointer"
+            className="bg-pink-200 border-black/40 hover:bg-pink-300 cursor-pointer w-full max-w-xl"
           >
             {expanded ? "Show less" : `Show more (${hidden})`}
           </Button>

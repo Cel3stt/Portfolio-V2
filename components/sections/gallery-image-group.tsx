@@ -78,9 +78,9 @@ export default function GalleryImageGroup({
         <div className="mt-4 flex justify-center">
           <Button
             variant="outline"
-            size="sm"
+            size="lg"
             onClick={() => setExpanded((v) => !v)}
-            className="bg-primary border-4"
+            className="bg-rose-100 border-black/20 border-2"
           >
             {expanded ? "Show less" : `Show more (${hiddenCount})`}
           </Button>

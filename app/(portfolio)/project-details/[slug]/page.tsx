@@ -139,7 +139,7 @@ export default async function ProjectDetails({
           )}
 
           {project.projectFeatures && project.projectFeatures.length > 0 && (
-            <div className="mt-10 mb-10">
+            <div className="mt-14 mb-10">
               <Label className="bg-primary py-1 px-2 text-lg font-semibold">
                 FEATURES
               </Label>

@@ -42,7 +42,7 @@ export default async function BuildTracker() {
               <Label className="text-lg font-mono">What I’m Building</Label>
             </div>
             <Label className="font-heading font-extralight text-neutral-600 text-xs ml-8">
-              Click each folder to view the details of the project
+              List of projects I’m currently building and tracking progress on.
             </Label>
           </div>
 
