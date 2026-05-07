@@ -50,9 +50,9 @@ type Gallery = {
 export default async function GalleryPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const { data } = await sanityFetch({
     query: GALLERY_QUERY,
     params: { slug },
