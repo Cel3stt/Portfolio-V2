@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
-
+import defaultProfile from '@/public/default-profile.png'
 
 const PROFILE_QUERY = defineQuery(`*[_id == "profile"][0]{
   profileImage,
@@ -20,9 +20,10 @@ export default async function AboutMe() {
     return null;
   }
 
-  const profileImageSrc: string | undefined = profile.profileImage
+  const profileImageSrc = profile.profileImage
     ? urlFor(profile.profileImage).width(280).height(280).url()
-    : undefined;
+    : defaultProfile;
+
 
 
   return (
