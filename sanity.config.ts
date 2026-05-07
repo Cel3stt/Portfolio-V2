@@ -1,4 +1,4 @@
-'use client'
+
 
 /**
  * This configuration is used for the Sanity Studio mounted at `app/(sanity)/studio/[[...tool]]/page.tsx` (URL: /studio)
