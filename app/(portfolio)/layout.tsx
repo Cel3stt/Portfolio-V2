@@ -3,6 +3,9 @@ import { Courgette, Geist_Mono, Inconsolata, JetBrains_Mono } from "next/font/go
 import "../globals.css";
 import { cn } from "@/lib/utils";
 import { SanityLive } from "@/sanity/lib/live";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { DisableDraftMode } from "@/components/disable-draft-mode";
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
 const courgetteCursive = Courgette({ subsets: ["latin"], weight: "400", variable: "--font-courgette" });
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
   description: "My Portfolio ",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -43,6 +46,13 @@ export default function RootLayout({
         {children}
 
         <SanityLive/> 
+         {(await draftMode()).isEnabled && (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+
+          </>
+        )}
         </body>
     </html>
   );
