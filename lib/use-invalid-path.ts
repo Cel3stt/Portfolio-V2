@@ -2,15 +2,12 @@
 
 import { usePathname } from "next/navigation";
 
+export default function UseInvalidPaths() {
+	const pathName = usePathname();
 
- 
- export default function UseInvalidPaths() {
-   const pathName = usePathname();
+	const invalidPath = ["studio"];
 
-   const invalidPath = ['studio'];
+	const isInvalid = invalidPath.some((path) => pathName.includes(path));
 
-   const isInvalid = invalidPath.some((path) => pathName.includes(path))
-
-   return isInvalid;    
- }
-  
+	return isInvalid;
+}
