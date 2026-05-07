@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { CalendarDays, Cpu, User } from "lucide-react";
 import { sanityFetch } from "@/sanity/lib/live";
 import ProjectPreview from "@/components/sections/project-preview";
+import { Button } from "@/components/ui/button";
 
 const PROJECT_QUERY = `*[_type == "project" && (slug.current == $slug || _id == $slug)][0]{
   projectName,
@@ -121,12 +122,13 @@ export default async function ProjectDetails({
             ))}
           </div>
 		  
-		  <div>
-			<Label className="text-lg font-semibold text-primary underline">
-              <a href={project.projectURL} target="_blank" rel="noopener noreferrer">
-                Visit Project
-              </a>
-            </Label>
+		  <div className="mt-8">
+		
+
+			   <Button variant={'outline'} size={'sm'} asChild>
+                    <a href={project.projectURL} target='_blank' rel='noopener noreferrer'>{project.projectURL}</a>
+                </Button>
+                
 		  </div>
 
           {project.projectOverview && project.projectOverview.length > 0 && (
