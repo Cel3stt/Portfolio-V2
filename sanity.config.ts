@@ -30,7 +30,7 @@ export default defineConfig({
         initial: process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
         preview: "/",
         previewMode: {
-          enable: "/api/draft-mode/enable",
+          enable: "/app/api/draft-mode/enable",
         }
       }
        }),
