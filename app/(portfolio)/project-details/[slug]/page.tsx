@@ -14,6 +14,7 @@ const PROJECT_QUERY = `*[_type == "project" && (slug.current == $slug || _id == 
   techStack,
   projectRole,
   projectOverview,
+   projectURL,
   projectImage[]{
     _key,
     asset->{
@@ -41,6 +42,7 @@ type Project = {
   projectOverview?: PortableTextBlock[];
   projectImage?: SanityImage[];
   projectFeatures?: string[];
+  projectURL?: string;
 };
 
 export default async function ProjectDetails({
@@ -118,6 +120,14 @@ export default async function ProjectDetails({
               </div>
             ))}
           </div>
+		  
+		  <div>
+			<Label className="text-lg font-semibold text-primary underline">
+              <a href={project.projectURL} target="_blank" rel="noopener noreferrer">
+                Visit Project
+              </a>
+            </Label>
+		  </div>
 
           {project.projectOverview && project.projectOverview.length > 0 && (
             <div className="mt-10">
