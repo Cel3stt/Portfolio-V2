@@ -14,6 +14,6 @@ export const client = createClient({
   apiVersion,
   useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
 stega: {
-    studioUrl: process.env.NEXT_SANITY_STUDIO_PREVIEW_ORIGIN,
+    studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
   },
 })
