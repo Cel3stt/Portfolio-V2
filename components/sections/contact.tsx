@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardHeader } from "../ui/card";
 import Image from "next/image";
 import { Label } from "../ui/label";
 import headerIcon from "@/public/header-icon.svg";
@@ -14,6 +14,12 @@ contactType,
 contactUrl
 }
 }`
+
+type ContactLink = {
+  _key: string;
+  contactType?: string;
+  contactUrl?: string;
+};
 
 export default async function Contact() {
 
@@ -30,7 +36,7 @@ export default async function Contact() {
                 <Label className="text-base font-heading">Contact</Label>
               </div>
               <div>
-                <Label className="text-xs bg-primary text-neutral-600">Let's Connect!</Label>
+                <Label className="text-xs bg-primary text-neutral-600">Let&apos;s Connect!</Label>
               </div>
              
             </div>
@@ -38,7 +44,7 @@ export default async function Contact() {
         </CardHeader>
 
         <div className="grid grid-cols-2 gap-1 items-center -mt-2 justify-center">
-          {contacts?.contacts?.map((contact: any) => (
+          {contacts?.contacts?.map((contact: ContactLink) => (
             <Button asChild variant={"outline"} key={contact._key} className="text-xs py-1">
               <a href={contact.contactUrl} target="_blank" rel="noopener noreferrer">
                 {contact.contactType}

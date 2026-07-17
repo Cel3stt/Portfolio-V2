@@ -4,7 +4,7 @@ import { Label } from '../ui/label'
 import Image from 'next/image'
 import headerIcon from '@/public/header-icon.svg'
 import { Button } from '../ui/button'
-import { ArrowUpDown, File } from 'lucide-react'
+import { File } from 'lucide-react'
 import projectFolder from '@/public/project-folder.svg'
 import Link from 'next/link'
 import { sanityFetch } from '@/sanity/lib/live'
@@ -18,6 +18,14 @@ const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt asc) {
   projectDescription,
   projectURL
 }`
+
+type ProjectListItem = {
+  _id: string;
+  slug?: string;
+  projectName?: string;
+  projectDescription?: string;
+  projectURL?: string;
+};
 
 export default async function Projects() {
   const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
@@ -47,7 +55,7 @@ export default async function Projects() {
 
 
            <CardContent className='grid grid-cols-2 gap-4 pb-4 sm:grid-cols-4'>
-        {(projects as any[])?.map((item) => {
+        {(projects as ProjectListItem[])?.map((item) => {
             const detailsHref = item.slug ? `/project-details/${item.slug}` : '#'
             return (
             <div key={item._id} className='flex flex-col items-center gap-2'>

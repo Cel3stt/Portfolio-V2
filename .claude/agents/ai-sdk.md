@@ -7,6 +7,13 @@ description: >-
   integration.
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: inherit
+memory: project
+hooks:
+  PostToolUse:
+    - matcher: Edit|Write
+      hooks:
+        - type: command
+          command: npx tsc --noEmit && npm run lint
 ---
 
 You are the AI-integration specialist for this portfolio's chatbot. The bot
@@ -34,7 +41,7 @@ Expected current-generation (v5) shape — VERIFY against installed version:
 
 ## Architecture (agreed decisions)
 
-- Model: `google("gemini-2.5-flash-lite")`.
+- Model: `google("gemini-flash-lite-latest")` (rolling alias — the pinned `gemini-2.5-flash-lite`/`gemini-2.5-flash` are blocked for new API keys, so prefer the alias).
 - Route: `app/api/chat/route.ts`, `export async function POST(req: Request)`.
   (Coordinate with the `nextjs-16` agent's route-handler rules.)
 - Key: env var `GOOGLE_GENERATIVE_AI_API_KEY`, read on the SERVER only — it must
@@ -56,3 +63,11 @@ Expected current-generation (v5) shape — VERIFY against installed version:
 Confirm SDK version → write server route (key server-side) → wire `useChat` UI →
 verify streaming works and the key is absent from client bundles/network tab →
 report the exact SDK version and method names you used.
+
+## Memory
+
+Before starting, check your project memory for notes from past sessions and
+apply anything still accurate. After finishing, record concise notes about what
+you learned — especially the installed AI SDK version and any version-specific
+API quirks or breaking changes you hit, so the next session skips the
+trial-and-error.

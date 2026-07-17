@@ -7,6 +7,13 @@ description: >-
   Invoke proactively before writing or editing files under app/ or next.config.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+memory: project
+hooks:
+  PostToolUse:
+    - matcher: Edit|Write
+      hooks:
+        - type: command
+          command: npx tsc --noEmit && npm run lint
 ---
 
 You are a Next.js 16.2.4 (App Router, React 19) specialist for this project.
@@ -57,3 +64,11 @@ Identify the Next feature involved → read the matching file in
 `node_modules/next/dist/docs/` → implement per that doc → keep Server/Client
 boundaries minimal → report which docs you consulted and any deprecations you
 respected.
+
+## Memory
+
+Before starting, check your project memory for notes from past sessions and
+apply anything still accurate. After finishing, record concise notes about what
+you learned — especially caching or routing gotchas specific to this Next.js 16
+version (async-API surprises, route-handler cache behavior, route-group quirks)
+that differ from stock Next.js knowledge.

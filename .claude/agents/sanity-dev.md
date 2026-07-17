@@ -7,6 +7,13 @@ description: >-
   from or writes to sanity/ or queries portfolio content.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+memory: project
+hooks:
+  PostToolUse:
+    - matcher: Edit|Write
+      hooks:
+        - type: command
+          command: npx tsc --noEmit && npm run lint
 ---
 
 You are a Sanity v5 + next-sanity specialist for this Next.js portfolio. The
@@ -78,3 +85,11 @@ Read the schema → write/adjust the GROQ against real field names → choose th
 correct client → if you changed schema or added a `defineQuery`, run
 `npm run typegen` → report exactly which files changed and whether types were
 regenerated.
+
+## Memory
+
+Before starting, check your project memory for notes from past sessions and
+apply anything still accurate. After finishing, record concise notes about what
+you learned that will save time next session — especially actual schema field
+names you confirmed or corrected, and which client/perspective choice worked for
+a given task.

@@ -15,6 +15,12 @@ certificationIssuer,
 certificationDate
 }}`
 
+type Certification = {
+  _key: string;
+  certificationName?: string;
+  certificationIssuer?: string;
+  certificationDate?: string;
+};
 
 export default async function Certifications() {
 
@@ -35,7 +41,7 @@ export default async function Certifications() {
         </CardHeader>
 
          <CardContent className='flex flex-col gap-4'>
-            {certifications?.certificationName?.map((group: any) => (
+            {certifications?.certificationName?.map((group: Certification) => (
                 <div key={group._key} className='mb-3 space-y-1 text-neutral-700 '>
                     <Label className='text-md bg-primary'>{group.certificationName}</Label>
                     <Label className='text-sm'>{group.certificationIssuer}</Label>

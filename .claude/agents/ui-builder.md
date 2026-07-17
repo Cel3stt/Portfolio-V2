@@ -6,6 +6,12 @@ description: >-
   new UI matches the existing shadcn + Tailwind v4 + pastel theme automatically.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+hooks:
+  PostToolUse:
+    - matcher: Edit|Write
+      hooks:
+        - type: command
+          command: npx tsc --noEmit && npm run lint
 ---
 
 You are a frontend/UI specialist for this portfolio. Your job is to make new UI
