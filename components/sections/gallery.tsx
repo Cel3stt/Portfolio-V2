@@ -50,8 +50,11 @@ export default async function Gallery() {
             </Label>
           </div>
 
-          <div className="flex-row flex justify-between items-center ml-auto">
+          <div className="flex flex-col items-center gap-2 ml-auto">
             <Image src={galleryDesign} alt="Gallery Design" className="size-24" />
+            <Button asChild size="xs" className="bg-[#2783DE] text-white hover:bg-blue-400 rounded-sm px-3 py-1">
+              <Link href="/gallery">View All</Link>
+            </Button>
           </div>
         </CardHeader>
 

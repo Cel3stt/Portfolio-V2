@@ -8,7 +8,6 @@ import { File } from 'lucide-react'
 import projectFolder from '@/public/project-folder.svg'
 import Link from 'next/link'
 import { sanityFetch } from '@/sanity/lib/live'
-import ProjectsDialog from './projects-dialog'
 
 
 const PROJECTS_QUERY = `*[_type == "project"] | order(_updatedAt asc) {
@@ -48,7 +47,9 @@ export default async function Projects() {
              <div className='flex-row flex justify-between items-center ml-auto'>
             
 
-                <ProjectsDialog projectlist={projects} />
+                <Button asChild className="bg-[#2783DE] text-white hover:bg-blue-400 rounded-sm px-3 py-1 ml-2">
+                    <Link href="/projects">View All</Link>
+                </Button>
              </div>
 
             </CardHeader>

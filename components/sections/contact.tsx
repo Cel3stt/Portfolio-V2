@@ -5,6 +5,7 @@ import { Label } from "../ui/label";
 import headerIcon from "@/public/header-icon.svg";
 import { Button } from "../ui/button";
 import { sanityFetch } from "@/sanity/lib/live";
+import Link from "next/link";
 
 
 const CONTACTS_QUERY = `*[_type == 'contacts'][0]{
@@ -38,9 +39,12 @@ export default async function Contact() {
               <div>
                 <Label className="text-xs bg-primary text-neutral-600">Let&apos;s Connect!</Label>
               </div>
-             
+
             </div>
           </div>
+          <Button asChild size="xs" className="bg-[#2783DE] text-white hover:bg-blue-400 rounded-sm px-2 py-0.5 ml-auto">
+            <Link href="/contacts">View All</Link>
+          </Button>
         </CardHeader>
 
         <div className="grid grid-cols-2 gap-1 items-center -mt-2 justify-center">

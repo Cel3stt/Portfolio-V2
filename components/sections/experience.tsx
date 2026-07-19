@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { Label } from '../ui/label'
 import headerIcon from '@/public/header-icon.svg'
 import { sanityFetch } from '@/sanity/lib/live'
+import { Button } from '../ui/button'
+import Link from 'next/link'
 
 
 
@@ -43,8 +45,11 @@ export default async function Experience() {
               <Image src={headerIcon} alt="Projects" className="size-5" />
               <Label className="text-base font-heading">Experience</Label>
             </div>
-           
+
           </div>
+          <Button asChild size="xs" className="bg-[#2783DE] text-white hover:bg-blue-400 rounded-sm px-3 py-1 ml-auto">
+            <Link href="/experience">View All</Link>
+          </Button>
         </CardHeader>
 
          <CardContent>
