@@ -11,7 +11,7 @@ import type { SanityImageSource } from "@sanity/image-url";
 
 // 1. Projects -----------------------------------------------------------------
 export const PROJECTS_QUERY = defineQuery(
-  `*[_type == "project"] | order(_updatedAt asc){ _id, "slug": coalesce(slug.current, _id), projectName, projectDescription, projectURL }`,
+  `*[_type == "project"] | order(_updatedAt asc){ _id, "slug": coalesce(slug.current, _id), projectName, projectDescription, projectURL, projectDate, projectRole, techStack, "cover": projectImage[0] }`,
 );
 
 export type Project = {
@@ -20,6 +20,10 @@ export type Project = {
   projectName?: string;
   projectDescription?: string;
   projectURL?: string;
+  projectDate?: string;
+  projectRole?: string;
+  techStack?: string[];
+  cover?: SanityImageSource | null;
 };
 
 // 2. Experience ---------------------------------------------------------------
