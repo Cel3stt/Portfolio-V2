@@ -1,4 +1,5 @@
 import {
+	BackpackIcon,
 	BriefcaseBusinessIcon,
 	CpuIcon,
 	DroneIcon,
@@ -6,6 +7,7 @@ import {
 	GalleryThumbnails,
 	KanbanIcon,
 	PhoneIcon,
+	QuoteIcon,
 	ScrollTextIcon,
 	UserIcon,
 	WallpaperIcon,
@@ -98,5 +100,23 @@ export const structure: StructureResolver = (S) =>
 				.title("gallery")
 				.icon(GalleryThumbnails)
 				.child(S.documentTypeList("gallery").title("Gallery")),
+			S.divider(),
+
+			S.listItem()
+				//recommendations
+				.title("Recommendations")
+				.icon(QuoteIcon)
+				.child(
+					S.document()
+						.schemaType("recommendations")
+						.documentId("recommendations"),
+				),
+			S.divider(),
+
+			S.listItem()
+				//gear
+				.title("Gear")
+				.icon(BackpackIcon)
+				.child(S.document().schemaType("gear").documentId("gear")),
 			S.divider(),
 		]);
