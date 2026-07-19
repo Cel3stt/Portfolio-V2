@@ -25,6 +25,12 @@ const GALLERY_QUERY = `*[_type == "gallery"]{
   galleryDescription
 }`;
 
+type GalleryCard = {
+  _id: string;
+  slug?: string;
+  galleryTitle?: string;
+};
+
 export default async function Gallery() {
 
   const {data: gallery} = await sanityFetch({ query: GALLERY_QUERY });
@@ -52,12 +58,12 @@ export default async function Gallery() {
    
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 -mt-3">
-          {gallery.map((item: any) => {
+          {gallery.map((item: GalleryCard) => {
             const detailsHref = item.slug ? `/gallery/${item.slug}` : "#";
             return (
               <Link key={item._id} href={detailsHref}>
                 <Card className="rounded-lg flex-col items-center justify-center transition-colors hover:bg-accent">
-                  <Image src={galleryBg} alt={item.galleryTitle} className=" p-1" />
+                  <Image src={galleryBg} alt={item.galleryTitle ?? "Gallery"} className=" p-1" />
 
                   <div className="items-center justify-center -mt-4 text-neutral-700">
                     <Button variant={"ghost"} className="text-sm " asChild>

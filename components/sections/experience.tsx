@@ -19,6 +19,16 @@ jobDescription
 }
 }`
 
+type ExperienceEntry = {
+  _key: string;
+  companyName?: string;
+  jobTitle?: string;
+  startDate?: string;
+  endDate?: string;
+  companyLocation?: string;
+  jobDescription?: string;
+};
+
 export default async function Experience() {
 
   const {data: experience} = await sanityFetch({ query: EXPERIENCE_QUERY});
@@ -38,7 +48,7 @@ export default async function Experience() {
         </CardHeader>
 
          <CardContent>
-            {experience?.experienceName?.map((group: any) => (
+            {experience?.experienceName?.map((group: ExperienceEntry) => (
                 <div key={group._key} className='mb-3 space-y-1 text-neutral-700 font-mono'>
                     <Label className='text-sm font-semibold'>{group.jobTitle} </Label>
                     <Label className='text-xs font-medium'> - {group.companyName}</Label>

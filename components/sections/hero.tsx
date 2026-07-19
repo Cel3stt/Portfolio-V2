@@ -39,7 +39,7 @@ export default async function Hero() {
         <div className="flex-col items-center mt-2">
           <div className="flex flex-row gap-3">
             <Label className="text-3xl sm:text-4xl md:text-5xl font-light font-heading">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="ml-2 inline-block font-cursive">Celest</span>
             </Label>
             <Image

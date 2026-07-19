@@ -6,6 +6,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
+import AskCelest from "@/components/chat/ask-celest";
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
 const courgetteCursive = Courgette({ subsets: ["latin"], weight: "400", variable: "--font-courgette" });
@@ -45,7 +46,8 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
 
-        <SanityLive/> 
+        <SanityLive/>
+        <AskCelest />
          {(await draftMode()).isEnabled && (
           <>
             <VisualEditing />

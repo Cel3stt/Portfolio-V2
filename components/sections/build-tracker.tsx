@@ -3,8 +3,7 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import headerIcon from "@/public/header-icon.svg";
 import { Label } from "../ui/label";
-import { Button } from "../ui/button";
-import { ArrowUpDown, File, Loader, Wrench } from "lucide-react";
+import { File, Loader, Wrench } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -28,6 +27,13 @@ techstackUsed[],
 status
 }
 }`
+
+type BuildTask = {
+  _key: string;
+  taskName?: string;
+  techstackUsed?: string[];
+  status?: string;
+};
 
 export default async function BuildTracker() {
 
@@ -78,7 +84,7 @@ export default async function BuildTracker() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {currentBuilding?.taskName?.map((task: any) => (
+              {currentBuilding?.taskName?.map((task: BuildTask) => (
                 <TableRow key={task._key}>
                   <TableCell className="font-medium">
                     {task.taskName}
