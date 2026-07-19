@@ -6,10 +6,32 @@ import {
   createUIMessageStreamResponse,
   type UIMessage,
 } from "ai";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 import { getPortfolioContext } from "@/sanity/lib/portfolio-context";
 
 const MAX_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 2000;
+
+// Rate limiting (Upstash Redis) — shared across serverless instances.
+// Two limiters because one Ratelimit instance = one window; both must pass.
+const redis = Redis.fromEnv();
+const minuteLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, "1 m"),
+  prefix: "chat:min",
+});
+const dayLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(50, "1 d"),
+  prefix: "chat:day",
+});
+
+function getClientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0].trim();
+  return req.headers.get("x-real-ip") ?? "anonymous";
+}
 
 function buildSystemPrompt(context: string): string {
   return `You are a friendly assistant on Celest Jerez's portfolio website. You help visitors and recruiters learn about her background, projects, and skills.
@@ -29,6 +51,23 @@ ${context}`;
 }
 
 export async function POST(req: Request) {
+  const ip = getClientIp(req);
+  try {
+    const [minute, day] = await Promise.all([
+      minuteLimit.limit(ip),
+      dayLimit.limit(ip),
+    ]);
+    if (!minute.success || !day.success) {
+      return new Response(
+        "You've reached the limit for now — try again shortly.",
+        { status: 429, headers: { "Retry-After": "60" } },
+      );
+    }
+  } catch {
+    // Redis unreachable → fail OPEN so a transient Redis issue doesn't take the
+    // chatbot down. The message-count/length caps below still apply.
+  }
+
   let body: unknown;
   try {
     body = await req.json();
