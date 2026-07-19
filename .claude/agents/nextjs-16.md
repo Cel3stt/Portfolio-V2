@@ -7,6 +7,7 @@ description: >-
   Invoke proactively before writing or editing files under app/ or next.config.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+color: cyan
 memory: project
 hooks:
   PostToolUse:

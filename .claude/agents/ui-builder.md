@@ -6,6 +6,7 @@ description: >-
   new UI matches the existing shadcn + Tailwind v4 + pastel theme automatically.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+color: purple
 hooks:
   PostToolUse:
     - matcher: Edit|Write

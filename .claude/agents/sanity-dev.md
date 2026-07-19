@@ -7,6 +7,7 @@ description: >-
   from or writes to sanity/ or queries portfolio content.
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: inherit
+color: green
 memory: project
 hooks:
   PostToolUse:

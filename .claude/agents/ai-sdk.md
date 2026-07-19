@@ -8,6 +8,7 @@ description: >-
 tools: Read, Grep, Glob, Edit, Write, Bash, WebFetch, WebSearch
 model: inherit
 memory: project
+color: blue
 hooks:
   PostToolUse:
     - matcher: Edit|Write

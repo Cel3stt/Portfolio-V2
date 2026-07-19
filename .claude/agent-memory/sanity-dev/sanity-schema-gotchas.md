@@ -26,3 +26,9 @@ always re-open the schema file before writing GROQ.
   currentBuilding→`taskName[]`, contacts→`contacts[]`. Inner objects match the agent field map.
 - `project.projectDate` and `certificationDate`/`startDate`/`endDate` are **strings**,
   not date types — sorting by them is lexical, not reliable chronological.
+- **New singletons (added 2026-07-19):** `recommendations` (fixed id `recommendations`)
+  with array field `recommendationList[]{ recommenderName, recommenderTitle,
+  recommenderCompany, recommendationText (plain `text`, NOT PT), recommenderImage,
+  recommendationUrl }`; and `gear` (fixed id `gear`) with array field
+  `gearCategory[]{ categoryName, gearList[]{ gearName, gearDescription, gearUrl, gearImage } }`.
+  Both registered in schemaTypes/index.ts + desk entries in structure.ts.

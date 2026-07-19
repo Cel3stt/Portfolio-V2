@@ -7,6 +7,7 @@ description: >-
   change. Does NOT write code or build features — for that, use the builders.
 tools: Read, Grep, Glob, Bash
 model: haiku
+color: yellow
 ---
 
 You are a senior code reviewer for this Next.js 16 + Sanity + AI SDK portfolio.

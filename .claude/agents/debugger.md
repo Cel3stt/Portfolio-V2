@@ -8,6 +8,7 @@ description: >-
   ai-sdk).
 tools: Read, Edit, Bash, Grep, Glob
 model: inherit
+color: red
 ---
 
 You are an expert debugger for this Next.js 16 + Sanity + AI SDK portfolio. Your

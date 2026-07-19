@@ -1,0 +1,1 @@
+- [Async request APIs](async-request-apis.md) — cookies()/draftMode()/headers()/params are Promises and must be awaited in this Next 16
