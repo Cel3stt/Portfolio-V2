@@ -28,7 +28,10 @@ export type Project = {
 
 // 2. Experience ---------------------------------------------------------------
 export const EXPERIENCE_QUERY = defineQuery(
-  `*[_type == 'experience'][0]{ experienceName[]{ _key, companyName, jobTitle, startDate, endDate, companyLocation, jobDescription } }`,
+  `*[_id == 'experience'][0]{
+    experienceName[]{ _key, companyName, jobTitle, startDate, endDate, companyLocation, jobDescription, skills },
+    educationList[]{ _key, schoolName, degree, startDate, endDate, awards }
+  }`,
 );
 
 export type ExperienceEntry = {
@@ -39,13 +42,26 @@ export type ExperienceEntry = {
   endDate?: string;
   companyLocation?: string;
   jobDescription?: string;
+  skills?: string[];
 };
 
-export type ExperienceData = { experienceName?: ExperienceEntry[] } | null;
+export type EducationEntry = {
+  _key: string;
+  schoolName?: string;
+  degree?: string;
+  startDate?: string;
+  endDate?: string;
+  awards?: string[];
+};
+
+export type ExperienceData = {
+  experienceName?: ExperienceEntry[];
+  educationList?: EducationEntry[];
+} | null;
 
 // 3. Certifications -----------------------------------------------------------
 export const CERTIFICATIONS_QUERY = defineQuery(
-  `*[_type == 'certifications'][0]{ certificationName[]{ _key, certificationName, certificationIssuer, certificationDate } }`,
+  `*[_id == 'certifications'][0]{ certificationName[]{ _key, certificationName, certificationIssuer, certificationDate } }`,
 );
 
 export type Certification = {
@@ -92,7 +108,7 @@ export type GalleryCard = {
 
 // 7. Contacts -----------------------------------------------------------------
 export const CONTACTS_QUERY = defineQuery(
-  `*[_type == 'contacts'][0]{ contacts[]{ _key, contactType, contactUrl } }`,
+  `*[_id == 'contacts'][0]{ contacts[]{ _key, contactType, contactUrl } }`,
 );
 
 export type ContactLink = {
@@ -105,7 +121,7 @@ export type ContactsData = { contacts?: ContactLink[] } | null;
 
 // 8. Current building / Build tracker -----------------------------------------
 export const CURRENT_BUILDING_QUERY = defineQuery(
-  `*[_type == 'currentBuilding'][0]{ taskName[]{ _key, taskName, techstackUsed, status } }`,
+  `*[_id == 'currentBuilding'][0]{ taskName[]{ _key, taskName, techstackUsed, status } }`,
 );
 
 export type BuildTask = {

@@ -24,6 +24,12 @@ always re-open the schema file before writing GROQ.
 - `profile` text field is **`about`** (NOT `aboutText`).
 - Array-wrapper field names: experience→`experienceName[]`, certifications→`certificationName[]`,
   currentBuilding→`taskName[]`, contacts→`contacts[]`. Inner objects match the agent field map.
+- **`experience` doc extended (2026-07-19):** each `experienceName[]` role now also has
+  `skills` (array of string, optional). Doc also has a top-level `educationList[]{ schoolName
+  (required), degree, startDate, endDate, awards[] }` — inline object preview
+  select { title: schoolName, subtitle: degree }. Types in queries/sections.ts:
+  `ExperienceEntry` gained `skills?: string[]`; new `EducationEntry`; `ExperienceData`
+  now `{ experienceName?; educationList? } | null`.
 - `project.projectDate` and `certificationDate`/`startDate`/`endDate` are **strings**,
   not date types — sorting by them is lexical, not reliable chronological.
 - **New singletons (added 2026-07-19):** `recommendations` (fixed id `recommendations`)

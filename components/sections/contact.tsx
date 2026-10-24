@@ -8,7 +8,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import Link from "next/link";
 
 
-const CONTACTS_QUERY = `*[_type == 'contacts'][0]{
+const CONTACTS_QUERY = `*[_id == 'contacts'][0]{
 contacts[]{
 _key,
 contactType,

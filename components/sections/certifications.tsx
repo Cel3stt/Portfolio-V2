@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 
 
-const CERTIFICATIONS_QUERY = `*[_type == 'certifications'][0]{
+const CERTIFICATIONS_QUERY = `*[_id == 'certifications'][0]{
 certificationName[]{
 _key,
 certificationName,

@@ -20,7 +20,7 @@ import Link from "next/link";
 
 
 
-const CURRENTBUILDS_QUERY = `*[_type == 'currentBuilding'][0]{
+const CURRENTBUILDS_QUERY = `*[_id == 'currentBuilding'][0]{
 taskName[]{
 _key,
 taskName,

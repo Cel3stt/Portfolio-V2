@@ -49,7 +49,58 @@ export default defineType({
                         type: 'text',
                         validation: (Rule) => Rule.required(),
                     }),
+                    defineField({
+                        name: 'skills',
+                        title: 'Skills',
+                        type: 'array',
+                        of: [{ type: 'string' }],
+                    }),
                 ]
+            }
+        ]
+       }),
+       defineField({
+        name: 'educationList',
+        title: 'Education List',
+        type: 'array',
+        of: [
+            {
+                type: 'object',
+                fields: [
+                    defineField({
+                        name: 'schoolName',
+                        title: 'School Name',
+                        type: 'string',
+                        validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                        name: 'degree',
+                        title: 'Degree',
+                        type: 'string',
+                    }),
+                    defineField({
+                        name: 'startDate',
+                        title: 'Start Date',
+                        type: 'string',
+                    }),
+                    defineField({
+                        name: 'endDate',
+                        title: 'End Date',
+                        type: 'string',
+                    }),
+                    defineField({
+                        name: 'awards',
+                        title: 'Awards',
+                        type: 'array',
+                        of: [{ type: 'string' }],
+                    }),
+                ],
+                preview: {
+                    select: {
+                        title: 'schoolName',
+                        subtitle: 'degree',
+                    },
+                },
             }
         ]
        })

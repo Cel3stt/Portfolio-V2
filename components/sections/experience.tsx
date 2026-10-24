@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 
 
-const EXPERIENCE_QUERY = `*[_type == 'experience'][0]{
+const EXPERIENCE_QUERY = `*[_id == 'experience'][0]{
 experienceName[]{
 _key,
 companyName,
