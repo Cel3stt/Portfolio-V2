@@ -53,7 +53,7 @@ export default async function Experience() {
                     <Label className='text-sm font-semibold'>{group.jobTitle} </Label>
                     <Label className='text-xs font-medium'> - {group.companyName}</Label>
                     <Label className='text-xs italic'>{group.companyLocation} | {group.startDate} - {group.endDate}</Label>
-                    <Label className='text-xs pl-4 leading-relaxed text-neutral-600 mt-3'> • {group.jobDescription}</Label>
+                    <Label className='text-xs pl-4 leading-relaxed text-neutral-600 mt-3'>  {group.jobDescription}</Label>
                 </div>
             ))}
             
