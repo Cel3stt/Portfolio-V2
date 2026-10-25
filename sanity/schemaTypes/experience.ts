@@ -47,7 +47,6 @@ export default defineType({
                         name: 'jobDescription',
                         title: 'Job Description',
                         type: 'text',
-                        validation: (Rule) => Rule.required(),
                     }),
                 ]
             }
